@@ -71,7 +71,7 @@ module ::JdbcSpec
         when /char/i                           : :string
         when /float|double/i                   : :float
         when /int/i                            : :integer
-        when /num|dec|real/i                   : @scale == 0 ? :integer : :decimal
+        when /num|dec|real/i                   : (@scale.nil? || @scale == 0) ? :integer : :decimal
         when /date|time/i                      : :datetime
         when /clob/i                           : :text
         when /blob/i                           : :binary
